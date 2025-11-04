@@ -64,12 +64,9 @@
 				}).then((result) => {
 					if (result.isConfirmed) {
 						console.log("modificado");
-						service
-							.updatePersonaje(this.idSerie, this.idPersonaje)
-							.then((result) => {
-								console.log(result);
-								this.$router.push("/personajes/" + this.idSerie);
-							});
+						service.updatePersonaje(this.idSerie, this.idPersonaje).then(() => {
+							this.$router.push("/personajes/" + this.idSerie);
+						});
 
 						Swal.fire({
 							title: "Modificado",
