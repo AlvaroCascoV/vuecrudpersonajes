@@ -2,6 +2,9 @@
 	<div>
 		<h1>Personajes de {{ $route.params.id }}</h1>
 		<div>
+			<router-link class="btn btn-danger" :to="'/serie/' + $route.params.id">
+				Volver a serie
+			</router-link>
 			<table class="table table-primary">
 				<thead>
 					<tr>
@@ -37,10 +40,12 @@
 		},
 		watch: {
 			"$route.params.id"(nextVal, oldVal) {
-				if (nextVal != oldVal) {
-					service.findPersonajes(this.$route.params.id).then((result) => {
-						this.personajes = result;
-					});
+				if (nextVal) {
+					if (nextVal != oldVal) {
+						service.findPersonajes(this.$route.params.id).then((result) => {
+							this.personajes = result;
+						});
+					}
 				}
 			},
 		},

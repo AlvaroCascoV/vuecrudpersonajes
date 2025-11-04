@@ -13,6 +13,17 @@ export default class ServiceSeries {
                 .then(data => resolve(data))
         })
     }
+    getPersonajes() {
+        return new Promise(function (resolve) {
+            let request = "api/Personajes"
+            let url = Global.urlApiPersonajes + request
+            fetch(url)
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => resolve(data))
+        })
+    }
     findSerie(id) {
         return new Promise(function (resolve) {
             let request = "api/Series/" + id
@@ -26,7 +37,7 @@ export default class ServiceSeries {
     }
     findPersonajes(id) {
         return new Promise(function (resolve) {
-            let request = "/api/Series/PersonajesSerie/" + id
+            let request = "api/Series/PersonajesSerie/" + id
             let url = Global.urlApiPersonajes + request
             let personajes = {}
             axios.get(url).then(response => {
@@ -35,5 +46,22 @@ export default class ServiceSeries {
             })
         })
     }
-
+    insertPersonaje(personaje) {
+        return new Promise(function (resolve) {
+            let request = "api/Personajes"
+            let url = Global.urlApiPersonajes + request
+            axios.post(url, personaje).then(response => {
+                resolve(response.data)
+            })
+        })
+    }
+    updatePersonaje(idSerie, idPersonaje) {
+        return new Promise(function (resolve) {
+            let request = "api/personajes/" + idPersonaje + "/" + idSerie
+            let url = Global.urlApiPersonajes + request
+            axios.put(url).then(response => {
+                resolve(response.data)
+            })
+        })
+    }
 }

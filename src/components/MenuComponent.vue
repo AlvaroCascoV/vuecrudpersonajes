@@ -23,7 +23,14 @@
 						</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link class="nav-link" to="/create">Create</router-link>
+						<router-link class="nav-link" to="/create">
+							Nuevo Personaje
+						</router-link>
+					</li>
+					<li class="nav-item">
+						<router-link class="nav-link" to="/update">
+							Modificar Personaje
+						</router-link>
 					</li>
 					<li class="nav-item dropdown">
 						<a
